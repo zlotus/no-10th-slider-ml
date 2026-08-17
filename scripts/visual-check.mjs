@@ -18,7 +18,7 @@ page.on('console', (message) => {
 })
 page.on('requestfailed', (request) => failedRequests.push(`${request.url()} :: ${request.failure()?.errorText ?? 'failed'}`))
 
-const transformerSlides = [
+const chapterSlides = [
   [1, 4],
   [2, 6],
   [3, 6],
@@ -30,6 +30,12 @@ const transformerSlides = [
   [9, 7],
   [10, 5],
   [11, 7],
+  [12, 6],
+  [13, 7],
+  [14, 7],
+  [15, 7],
+  [16, 7],
+  [17, 7],
 ]
 
 const results = { routes: {}, scaling: {}, fullscreen: false, chapterTransitions: 0, stepChecks: 0 }
@@ -45,17 +51,16 @@ async function openAndCapture(hash, filename) {
   }))
 }
 
-for (const [slide, maxStep] of transformerSlides) {
+for (const [slide, maxStep] of chapterSlides) {
   await openAndCapture(`#/${slide}/${maxStep}`, `slide-${String(slide).padStart(2, '0')}-final.png`)
 }
-await openAndCapture('#/17/7', 'slide-17-sample-final.png')
 
-for (const [slide, step] of [[3, 3], [5, 4], [6, 3], [7, 4], [8, 4], [9, 4], [11, 3]]) {
+for (const [slide, step] of [[3, 3], [5, 4], [6, 3], [7, 4], [8, 4], [9, 4], [11, 3], [12, 3], [13, 4], [14, 4], [15, 4], [16, 4], [17, 4]]) {
   await openAndCapture(`#/${slide}/${step}`, `slide-${String(slide).padStart(2, '0')}-step-${String(step).padStart(2, '0')}.png`)
 }
 
-for (let index = 0; index < transformerSlides.length; index += 1) {
-  const [slide, maxStep] = transformerSlides[index]
+for (let index = 0; index < chapterSlides.length; index += 1) {
+  const [slide, maxStep] = chapterSlides[index]
   const testStep = Math.max(0, Math.floor(maxStep / 2))
   await page.goto(`${baseUrl}/#/${slide}/${testStep}`, { waitUntil: 'networkidle' })
   await page.keyboard.press('ArrowRight')
@@ -66,8 +71,8 @@ for (let index = 0; index < transformerSlides.length; index += 1) {
   if (page.url().endsWith(`#/${slide}/${testStep}`) === false) throw new Error(`ArrowLeft did not rewind slide ${slide}: ${page.url()}`)
   results.stepChecks += 1
 
-  if (index < transformerSlides.length - 1) {
-    const [nextSlide] = transformerSlides[index + 1]
+  if (index < chapterSlides.length - 1) {
+    const [nextSlide] = chapterSlides[index + 1]
     await page.goto(`${baseUrl}/#/${slide}/${maxStep}`, { waitUntil: 'networkidle' })
     await page.keyboard.press('ArrowRight')
     await page.waitForTimeout(60)
@@ -96,13 +101,16 @@ try {
 }
 
 for (const [width, height] of [[1440, 900], [1200, 1200], [2560, 1080]]) {
-  await page.setViewportSize({ width, height })
-  await page.goto(`${baseUrl}/#/11/7`, { waitUntil: 'networkidle' })
-  await page.waitForTimeout(120)
-  const rect = await page.locator('.stage').boundingBox()
-  results.scaling[`${width}x${height}`] = rect
-  if (!rect || rect.width > width + 1 || rect.height > height + 1) {
-    throw new Error(`Stage overflow at ${width}x${height}: ${JSON.stringify(rect)}`)
+  for (const slide of [12, 16, 17]) {
+    const maxStep = slide === 12 ? 6 : 7
+    await page.setViewportSize({ width, height })
+    await page.goto(`${baseUrl}/#/${slide}/${maxStep}`, { waitUntil: 'networkidle' })
+    await page.waitForTimeout(120)
+    const rect = await page.locator('.stage').boundingBox()
+    results.scaling[`${width}x${height}-slide-${slide}`] = rect
+    if (!rect || rect.width > width + 1 || rect.height > height + 1) {
+      throw new Error(`Stage overflow at ${width}x${height}, slide ${slide}: ${JSON.stringify(rect)}`)
+    }
   }
 }
 

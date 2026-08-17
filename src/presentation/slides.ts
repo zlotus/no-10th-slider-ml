@@ -9,6 +9,11 @@ import { Slide08MultiHead } from '../slides/Slide08MultiHead'
 import { Slide09EncoderDecoder } from '../slides/Slide09EncoderDecoder'
 import { Slide10TransformerBranches } from '../slides/Slide10TransformerBranches'
 import { Slide11ViT } from '../slides/Slide11ViT'
+import { Slide12GenerationChallenge } from '../slides/Slide12GenerationChallenge'
+import { Slide13VAE } from '../slides/Slide13VAE'
+import { Slide14GAN } from '../slides/Slide14GAN'
+import { Slide15AutoregressiveImage } from '../slides/Slide15AutoregressiveImage'
+import { Slide16CLIP } from '../slides/Slide16CLIP'
 import { TransformerSample } from '../slides/TransformerSample'
 import type { SlideDefinition } from './types'
 
@@ -89,6 +94,41 @@ export const slides: SlideDefinition[] = [
     maxStep: 7,
     tone: 'transformer',
     component: Slide11ViT,
+  },
+  {
+    number: 12,
+    title: '从“理解图像”到“生成图像”，难度为什么陡增？',
+    maxStep: 6,
+    tone: 'generation',
+    component: Slide12GenerationChallenge,
+  },
+  {
+    number: 13,
+    title: 'VAE：把图像压到一个可以采样的潜空间',
+    maxStep: 7,
+    tone: 'generation',
+    component: Slide13VAE,
+  },
+  {
+    number: 14,
+    title: 'GAN：生成器与判别器的对抗博弈',
+    maxStep: 7,
+    tone: 'generation',
+    component: Slide14GAN,
+  },
+  {
+    number: 15,
+    title: '如果图像也能离散成 Token，就能像写句子一样“写图”',
+    maxStep: 7,
+    tone: 'generation',
+    component: Slide15AutoregressiveImage,
+  },
+  {
+    number: 16,
+    title: 'CLIP：文图对齐，不是“先看图再分类”，而是进入共同语义空间',
+    maxStep: 7,
+    tone: 'generation',
+    component: Slide16CLIP,
   },
   {
     number: 17,

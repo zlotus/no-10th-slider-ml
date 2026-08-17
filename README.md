@@ -1,6 +1,6 @@
 # Transformer 与文图生成算法演进 Slides
 
-浏览器演示项目。Phase 2 使用封面、Transformer 并行关系计算和 Diffusion 加噪/去噪三张样板页建立 ML Slide Design System；Phase 3 已完成 Transformer 章节第 2～11 页，并保留第 17 页 Diffusion 样板。
+浏览器演示项目。Phase 2 使用封面、Transformer 并行关系计算和 Diffusion 加噪/去噪三张样板页建立 ML Slide Design System；Phase 3 已完成 Transformer 章节第 2～11 页，Phase 4 已完成文图生成前半章第 12～17 页。
 
 视觉体系继承自同系列项目 `no-10th-slider` 的固定舞台、深色网格、标题层级、mono 标签、step reveal、进度条和演示控制；ML 版本重新定义了颜色语义，并增加 token、matrix、heatmap、image progression 与 noise process 等视觉模式。项目独立运行，不跨仓库 import。
 
@@ -27,7 +27,7 @@ pnpm preview
 pnpm visual:check
 ```
 
-脚本检查第 1～11 页最终 Step、关键中间态、章节连续播放、键盘导航、全屏、三种桌面窗口比例、Console 与失败请求，并确认第 17 页样板仍可访问。临时截图写入已忽略的 `visual-check-output/`。
+脚本检查第 1～17 页最终 Step、关键中间态、全章连续播放、键盘导航、全屏、三种桌面窗口比例、Console 与失败请求。临时截图写入已忽略的 `visual-check-output/`。
 
 ## 演示控制
 
@@ -48,15 +48,18 @@ src/
 ├── components/
 │   ├── SlideFrame.tsx        # 页眉、页码、来源和底部结论
 │   ├── MLVisuals.tsx         # Token、Attention Matrix、Noise Frame、Process Arrow
-│   └── TransformerVisuals.tsx # Position Wave、Rotary Pair、Attention Head、Patch Grid
+│   ├── TransformerVisuals.tsx # Position Wave、Rotary Pair、Attention Head、Patch Grid
+│   └── GenerationVisuals.tsx  # Scene Image、Latent Cloud、Visual Token、Similarity Space
 ├── slides/
 │   ├── CoverSample.tsx
 │   ├── TransformerSample.tsx # 第 4 页 Phase 2 样板
 │   ├── Slide02*.tsx … Slide11*.tsx
-│   └── DiffusionSample.tsx
+│   ├── Slide12*.tsx … Slide16*.tsx
+│   └── DiffusionSample.tsx   # 第 17 页 Phase 2 样板 / Phase 4 收束页
 └── styles/
     ├── global.css            # Design tokens、runtime 和样板页
-    └── transformer-chapter.css # Transformer 章节布局与动画
+    ├── transformer-chapter.css # Transformer 章节布局与动画
+    └── generation-chapter.css  # 文图生成章节布局与动画
 ```
 
 新增页面时：
@@ -78,5 +81,6 @@ src/
 - Diffusion 样板参考了 `references/image-generation/` 的 Page 15–16 及 `media/image-013.png`、`image-014.png` 的 forward/reverse 结构；正式页面使用项目内 SVG/CSS 绘制的抽象信号和噪声场，没有把参考页或整份 PDF 打入 bundle。
 - Transformer 正式章节继续参考 PPT Slide 1–18 的任务背景、RNN 时间展开、固定上下文和 Attention 动机；Position、QKV、Multi-Head 与架构分流因原 PPT 素材不足，使用论文事实自行绘制。
 - ViT 页参考 AI 生图 PDF Page 9 与 `media/image-008.png` 的官方架构信息，正式页面重绘为可分步播放的 Patch Grid，而没有直接打包整份参考资料。
+- 文图生成前半章参考 PDF Page 1–8、12–16、31–40：分别提炼生成问题、VAE 概率潜变量、GAN 对抗训练、视觉 tokenizer / next-token、CLIP 对比学习和 DDPM 双向过程；正式页面均使用项目内 SVG/CSS 重绘，没有把参考页或原始 PDF 打入 bundle。
 
 Phase 1 的原始参考文件和索引保持不变。

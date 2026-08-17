@@ -44,5 +44,6 @@
 - **Phase 1**：参考资料预处理与逐页语义索引。
 - **Phase 2**：ML Slide Design System、独立 runtime 与三张样板页。
 - **Phase 3**：Transformer 章节第 2～11 页的正式实现。
+- **Phase 4**：文图生成前半章第 12～17 页的正式实现。
 - **Step**：单页内部可前进或回退的渐进讲解状态。
 - **视觉 DNA**：从 `no-10th-slider` 延续的固定舞台、深色网格、标题层级、mono 标签、进度与克制动画语言，不代表复制其 Agent 专用组件。
