@@ -13,3 +13,9 @@ references/image-generation/media/
 # Temporary conversion outputs
 *.tmp
 *.log
+
+# Frontend build artifacts
+node_modules/
+dist/
+*.tsbuildinfo
+visual-check-output/
