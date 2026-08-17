@@ -1,0 +1,15 @@
+# Original reference documents
+references/*.pptx
+references/*.pdf
+
+# Generated reference artifacts
+references/transformer/pages/
+references/transformer/media/
+references/transformer/raw/
+
+references/image-generation/pages/
+references/image-generation/media/
+
+# Temporary conversion outputs
+*.tmp
+*.log

@@ -1,0 +1,52 @@
+# AI 生图 PDF page → media 映射
+
+此映射由 `pdfimages -list` 与 `pdfimages -all` 的编号对应关系生成。
+内嵌图可能只是完整图的一部分、遮罩或页面组合元素；完整页面 PNG 仍是权威视觉参考。
+
+- Page 001: 无独立提取的内嵌位图
+- Page 002: `media/image-000.png` (image, 1800×946)
+- Page 003: `media/image-001.png` (image, 1664×818), `media/image-002.png` (image, 1280×696)
+- Page 004: `media/image-003.png` (image, 1280×512), `media/image-004.png` (image, 1280×491)
+- Page 005: `media/image-005.png` (image, 1280×792)
+- Page 006: `media/image-006.png` (image, 1592×1032)
+- Page 007: 无独立提取的内嵌位图
+- Page 008: `media/image-007.png` (image, 1280×799)
+- Page 009: `media/image-008.png` (image, 1280×661)
+- Page 010: 无独立提取的内嵌位图
+- Page 011: `media/image-009.png` (image, 1482×836)
+- Page 012: `media/image-010.png` (image, 2162×762), `media/image-011.png` (smask, 2162×762)
+- Page 013: 无独立提取的内嵌位图
+- Page 014: `media/image-012.jpg` (image, 1076×540)
+- Page 015: `media/image-013.png` (image, 1280×442)
+- Page 016: `media/image-014.png` (image, 1280×704)
+- Page 017: `media/image-015.png` (image, 1280×844), `media/image-016.png` (image, 1280×992)
+- Page 018: 无独立提取的内嵌位图
+- Page 019: `media/image-017.png` (image, 1280×626)
+- Page 020: `media/image-018.png` (image, 1280×358)
+- Page 021: 无独立提取的内嵌位图
+- Page 022: 无独立提取的内嵌位图
+- Page 023: `media/image-019.png` (image, 1480×768)
+- Page 024: `media/image-020.png` (image, 1280×624)
+- Page 025: 无独立提取的内嵌位图
+- Page 026: `media/image-021.png` (image, 1280×556)
+- Page 027: 无独立提取的内嵌位图
+- Page 028: 无独立提取的内嵌位图
+- Page 029: `media/image-022.png` (image, 1280×552)
+- Page 030: 无独立提取的内嵌位图
+- Page 031: `media/image-023.png` (image, 3840×1280), `media/image-024.png` (smask, 3840×1280), `media/image-025.png` (image, 543×544), `media/image-026.png` (smask, 543×544)
+- Page 032: `media/image-027.png` (image, 1040×300)
+- Page 033: 无独立提取的内嵌位图
+- Page 034: `media/image-028.png` (image, 1280×531)
+- Page 035: 无独立提取的内嵌位图
+- Page 036: `media/image-029.png` (image, 1280×729)
+- Page 037: `media/image-030.png` (image, 1280×641)
+- Page 038: `media/image-031.png` (image, 1280×618)
+- Page 039: 无独立提取的内嵌位图
+- Page 040: 无独立提取的内嵌位图
+- Page 041: `media/image-032.png` (image, 1280×654)
+- Page 042: `media/image-033.png` (image, 1280×570)
+- Page 043: 无独立提取的内嵌位图
+- Page 044: 无独立提取的内嵌位图
+- Page 045: 无独立提取的内嵌位图
+- Page 046: 无独立提取的内嵌位图
+- Page 047: 无独立提取的内嵌位图
