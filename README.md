@@ -1,6 +1,6 @@
 # Transformer 与文图生成算法演进 Slides
 
-浏览器演示项目。Phase 2 使用封面、Transformer 并行关系计算和 Diffusion 加噪/去噪三张样板页建立 ML Slide Design System；Phase 3 已完成 Transformer 章节第 2～11 页，Phase 4 已完成文图生成前半章第 12～17 页。
+浏览器演示项目，完整实现 25 页“近十年 Transformer 与文图生成算法演进”中文技术演讲：第 2～11 页讲 Transformer，第 12～17 页讲早期生成范式到 Diffusion，第 18～25 页完成 DDPM、Latent Diffusion、Cross-Attention、DiT、Flow、现代系统与双路线收束。
 
 视觉体系继承自同系列项目 `no-10th-slider` 的固定舞台、深色网格、标题层级、mono 标签、step reveal、进度条和演示控制；ML 版本重新定义了颜色语义，并增加 token、matrix、heatmap、image progression 与 noise process 等视觉模式。项目独立运行，不跨仓库 import。
 
@@ -27,7 +27,7 @@ pnpm preview
 pnpm visual:check
 ```
 
-脚本检查第 1～17 页最终 Step、关键中间态、全章连续播放、键盘导航、全屏、三种桌面窗口比例、Console 与失败请求。临时截图写入已忽略的 `visual-check-output/`。
+脚本检查第 1～25 页最终 Step、关键中间态、全章连续播放、键盘与页码跳转、全屏、三种桌面窗口比例、Console 与失败请求。临时截图写入已忽略的 `visual-check-output/`。
 
 ## 演示控制
 
@@ -49,17 +49,20 @@ src/
 │   ├── SlideFrame.tsx        # 页眉、页码、来源和底部结论
 │   ├── MLVisuals.tsx         # Token、Attention Matrix、Noise Frame、Process Arrow
 │   ├── TransformerVisuals.tsx # Position Wave、Rotary Pair、Attention Head、Patch Grid
-│   └── GenerationVisuals.tsx  # Scene Image、Latent Cloud、Visual Token、Similarity Space
+│   ├── GenerationVisuals.tsx  # Scene Image、Latent Cloud、Visual Token、Similarity Space
+│   └── ModernGenerationVisuals.tsx # Feature Map、Velocity Field、路线合流
 ├── slides/
 │   ├── CoverSample.tsx
 │   ├── TransformerSample.tsx # 第 4 页 Phase 2 样板
 │   ├── Slide02*.tsx … Slide11*.tsx
 │   ├── Slide12*.tsx … Slide16*.tsx
-│   └── DiffusionSample.tsx   # 第 17 页 Phase 2 样板 / Phase 4 收束页
+│   ├── DiffusionSample.tsx   # 第 17 页 Phase 2 样板 / Phase 4 收束页
+│   └── Slide18*.tsx … Slide25*.tsx # 现代生成主线与全篇收束
 └── styles/
     ├── global.css            # Design tokens、runtime 和样板页
     ├── transformer-chapter.css # Transformer 章节布局与动画
-    └── generation-chapter.css  # 文图生成章节布局与动画
+    ├── generation-chapter.css  # 文图生成前半章布局与动画
+    └── modern-generation-chapter.css # 第 18～25 页与双色合流
 ```
 
 新增页面时：
@@ -82,5 +85,7 @@ src/
 - Transformer 正式章节继续参考 PPT Slide 1–18 的任务背景、RNN 时间展开、固定上下文和 Attention 动机；Position、QKV、Multi-Head 与架构分流因原 PPT 素材不足，使用论文事实自行绘制。
 - ViT 页参考 AI 生图 PDF Page 9 与 `media/image-008.png` 的官方架构信息，正式页面重绘为可分步播放的 Patch Grid，而没有直接打包整份参考资料。
 - 文图生成前半章参考 PDF Page 1–8、12–16、31–40：分别提炼生成问题、VAE 概率潜变量、GAN 对抗训练、视觉 tokenizer / next-token、CLIP 对比学习和 DDPM 双向过程；正式页面均使用项目内 SVG/CSS 重绘，没有把参考页或原始 PDF 打入 bundle。
+- 现代生成主线参考 PDF Page 14–30 与 `media/image-019.png`、`image-020.png`、`image-022.png`：提炼 DDPM 单步训练、LDM 潜空间、Cross-Attention 和 DiT 架构关系；正式页面继续使用项目内 SVG/CSS 重绘。
+- Flow Matching / Rectified Flow 不在 Phase 1 PDF 覆盖范围内，因此按原始论文的速度场与分布运输表述新绘制教学示意，并明确避免“必然直线、必然更快、全面取代 Diffusion”等绝对化结论。
 
 Phase 1 的原始参考文件和索引保持不变。

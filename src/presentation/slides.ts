@@ -14,6 +14,14 @@ import { Slide13VAE } from '../slides/Slide13VAE'
 import { Slide14GAN } from '../slides/Slide14GAN'
 import { Slide15AutoregressiveImage } from '../slides/Slide15AutoregressiveImage'
 import { Slide16CLIP } from '../slides/Slide16CLIP'
+import { Slide18DDPM } from '../slides/Slide18DDPM'
+import { Slide19LatentDiffusion } from '../slides/Slide19LatentDiffusion'
+import { Slide20CrossAttention } from '../slides/Slide20CrossAttention'
+import { Slide21DiT } from '../slides/Slide21DiT'
+import { Slide22FlowMatching } from '../slides/Slide22FlowMatching'
+import { Slide23ModernSystem } from '../slides/Slide23ModernSystem'
+import { Slide24Timeline } from '../slides/Slide24Timeline'
+import { Slide25Summary } from '../slides/Slide25Summary'
 import { TransformerSample } from '../slides/TransformerSample'
 import type { SlideDefinition } from './types'
 
@@ -136,5 +144,61 @@ export const slides: SlideDefinition[] = [
     maxStep: 7,
     tone: 'generation',
     component: DiffusionSample,
+  },
+  {
+    number: 18,
+    title: 'DDPM：把“生成”变成一个稳定的去噪学习问题',
+    maxStep: 7,
+    tone: 'generation',
+    component: Slide18DDPM,
+  },
+  {
+    number: 19,
+    title: 'Stable Diffusion：不在像素空间去噪，而是在潜空间里做',
+    maxStep: 7,
+    tone: 'generation',
+    component: Slide19LatentDiffusion,
+  },
+  {
+    number: 20,
+    title: 'Prompt 不是“一句话”，而是持续参与去噪的条件',
+    maxStep: 8,
+    tone: 'hybrid',
+    component: Slide20CrossAttention,
+  },
+  {
+    number: 21,
+    title: 'Diffusion Transformer：连生成骨干也开始 Transformer 化',
+    maxStep: 7,
+    tone: 'hybrid',
+    component: Slide21DiT,
+  },
+  {
+    number: 22,
+    title: '从 Diffusion 到 Flow：不只学“怎么去噪”，而是学“怎么走过去”',
+    maxStep: 7,
+    tone: 'generation',
+    component: Slide22FlowMatching,
+  },
+  {
+    number: 23,
+    title: '今天的文图模型，已经是一整套生成系统',
+    maxStep: 7,
+    tone: 'hybrid',
+    component: Slide23ModernSystem,
+  },
+  {
+    number: 24,
+    title: '十年演进：两条路线，最终汇合',
+    maxStep: 6,
+    tone: 'hybrid',
+    component: Slide24Timeline,
+  },
+  {
+    number: 25,
+    title: '两条路线，走向同一个方向',
+    maxStep: 4,
+    tone: 'hybrid',
+    component: Slide25Summary,
   },
 ]

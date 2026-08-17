@@ -4,6 +4,7 @@ import { Presentation } from './presentation/Presentation'
 import './styles/global.css'
 import './styles/transformer-chapter.css'
 import './styles/generation-chapter.css'
+import './styles/modern-generation-chapter.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

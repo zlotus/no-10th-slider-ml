@@ -17,7 +17,7 @@
 
 - 用“上一代的问题 → 新方法为何出现 → 解决什么 → 留下什么”的方式组织内容。
 - Transformer 重点表达离散 token、矩阵和关系；图像生成重点表达图像、噪声、轨迹和连续过程。
-- 两条路线保持视觉区分，并在 Cross-Attention、DiT、MMDiT 和现代多模态生成处汇合。
+- 两条路线保持视觉区分，并已在 Cross-Attention、DiT、现代系统、双轨时间线和最终总结中汇合。
 - 不把项目扩展为 SaaS、CMS 或通用演示框架；不在当前 Phase 提前实现后续页面。
 - 不修改或删除原始 PPTX、PDF，也不让 production 页面长期直接读取 `references/`。
 
@@ -45,5 +45,6 @@
 - **Phase 2**：ML Slide Design System、独立 runtime 与三张样板页。
 - **Phase 3**：Transformer 章节第 2～11 页的正式实现。
 - **Phase 4**：文图生成前半章第 12～17 页的正式实现。
+- **Phase 5**：第 18～25 页现代生成主线、两条路线合流和完整 25 页收束。
 - **Step**：单页内部可前进或回退的渐进讲解状态。
 - **视觉 DNA**：从 `no-10th-slider` 延续的固定舞台、深色网格、标题层级、mono 标签、进度与克制动画语言，不代表复制其 Agent 专用组件。

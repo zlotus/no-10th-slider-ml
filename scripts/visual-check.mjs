@@ -36,9 +36,25 @@ const chapterSlides = [
   [15, 7],
   [16, 7],
   [17, 7],
+  [18, 7],
+  [19, 7],
+  [20, 8],
+  [21, 7],
+  [22, 7],
+  [23, 7],
+  [24, 6],
+  [25, 4],
 ]
 
 const results = { routes: {}, scaling: {}, fullscreen: false, chapterTransitions: 0, stepChecks: 0 }
+
+async function waitForRuntime(slide, step) {
+  const expected = `SLIDE ${String(slide).padStart(2, '0')} · STEP ${String(step).padStart(2, '0')}`
+  await page.waitForFunction(
+    (label) => document.querySelector('.page-indicator small')?.textContent?.includes(label),
+    expected,
+  )
+}
 
 async function openAndCapture(hash, filename) {
   await page.goto(`${baseUrl}/${hash}`, { waitUntil: 'networkidle' })
@@ -55,7 +71,7 @@ for (const [slide, maxStep] of chapterSlides) {
   await openAndCapture(`#/${slide}/${maxStep}`, `slide-${String(slide).padStart(2, '0')}-final.png`)
 }
 
-for (const [slide, step] of [[3, 3], [5, 4], [6, 3], [7, 4], [8, 4], [9, 4], [11, 3], [12, 3], [13, 4], [14, 4], [15, 4], [16, 4], [17, 4]]) {
+for (const [slide, step] of [[3, 3], [5, 4], [6, 3], [7, 4], [8, 4], [9, 4], [11, 3], [12, 3], [13, 4], [14, 4], [15, 4], [16, 4], [17, 4], [18, 5], [19, 4], [20, 4], [21, 5], [22, 5], [23, 5], [24, 4], [25, 2]]) {
   await openAndCapture(`#/${slide}/${step}`, `slide-${String(slide).padStart(2, '0')}-step-${String(step).padStart(2, '0')}.png`)
 }
 
@@ -63,6 +79,7 @@ for (let index = 0; index < chapterSlides.length; index += 1) {
   const [slide, maxStep] = chapterSlides[index]
   const testStep = Math.max(0, Math.floor(maxStep / 2))
   await page.goto(`${baseUrl}/#/${slide}/${testStep}`, { waitUntil: 'networkidle' })
+  await waitForRuntime(slide, testStep)
   await page.keyboard.press('ArrowRight')
   await page.waitForTimeout(60)
   if (page.url().endsWith(`#/${slide}/${testStep + 1}`) === false) throw new Error(`ArrowRight did not advance slide ${slide}: ${page.url()}`)
@@ -74,6 +91,7 @@ for (let index = 0; index < chapterSlides.length; index += 1) {
   if (index < chapterSlides.length - 1) {
     const [nextSlide] = chapterSlides[index + 1]
     await page.goto(`${baseUrl}/#/${slide}/${maxStep}`, { waitUntil: 'networkidle' })
+    await waitForRuntime(slide, maxStep)
     await page.keyboard.press('ArrowRight')
     await page.waitForTimeout(60)
     if (page.url().endsWith(`#/${nextSlide}/0`) === false) throw new Error(`Slide ${slide} did not continue to ${nextSlide}: ${page.url()}`)
@@ -86,10 +104,24 @@ await page.waitForTimeout(80)
 if (page.url().endsWith('#/1/0') === false) throw new Error(`Home did not go to first slide: ${page.url()}`)
 await page.keyboard.press('End')
 await page.waitForTimeout(80)
-if (page.url().endsWith('#/17/0') === false) throw new Error(`End did not go to last slide: ${page.url()}`)
+if (page.url().endsWith('#/25/0') === false) throw new Error(`End did not go to last slide: ${page.url()}`)
 await page.keyboard.press('Space')
 await page.waitForTimeout(80)
-if (page.url().endsWith('#/17/1') === false) throw new Error(`Space did not advance step: ${page.url()}`)
+if (page.url().endsWith('#/25/1') === false) throw new Error(`Space did not advance step: ${page.url()}`)
+
+await page.goto(`${baseUrl}/#/20/3`, { waitUntil: 'networkidle' })
+await page.keyboard.press('PageDown')
+await page.waitForTimeout(80)
+if (page.url().endsWith('#/20/4') === false) throw new Error(`PageDown did not advance: ${page.url()}`)
+await page.keyboard.press('PageUp')
+await page.waitForTimeout(80)
+if (page.url().endsWith('#/20/3') === false) throw new Error(`PageUp did not rewind: ${page.url()}`)
+
+await page.locator('.page-current').click()
+await page.locator('.page-jump-input').fill('24')
+await page.locator('.page-jump-input').press('Enter')
+await page.waitForTimeout(80)
+if (page.url().endsWith('#/24/0') === false) throw new Error(`Page indicator did not jump to 24: ${page.url()}`)
 
 try {
   await page.keyboard.press('f')
@@ -101,8 +133,8 @@ try {
 }
 
 for (const [width, height] of [[1440, 900], [1200, 1200], [2560, 1080]]) {
-  for (const slide of [12, 16, 17]) {
-    const maxStep = slide === 12 ? 6 : 7
+  for (const slide of [20, 22, 24, 25]) {
+    const maxStep = slide === 20 ? 8 : slide === 24 ? 6 : slide === 25 ? 4 : 7
     await page.setViewportSize({ width, height })
     await page.goto(`${baseUrl}/#/${slide}/${maxStep}`, { waitUntil: 'networkidle' })
     await page.waitForTimeout(120)
