@@ -37,7 +37,7 @@ export function Presentation() {
           {editingPage ? (
             <input
               className="page-jump-input"
-              aria-label="跳转到样板页"
+              aria-label="跳转到演示页"
               type="number"
               min={1}
               max={slides.length}
@@ -62,7 +62,7 @@ export function Presentation() {
           ) : (
             <span
               className="page-current"
-              title="点击输入样板页序号"
+              title="点击输入演示页序号"
               onClick={(event) => {
                 event.stopPropagation()
                 setPageInput(String(runtime.index + 1))
