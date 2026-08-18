@@ -37,7 +37,7 @@ export function Slide03RNN({ step }: SlideProps) {
         <Link2 /><div><span>PROBLEM 02</span><b>长距离依赖更难稳定传播</b><small>不是完全做不到，而是路径越长，学习越困难</small></div>
         <div className="long-sentence">
           {sentence.map((word, index) => <span key={`${word}-${index}`} className={index === 1 || index === 10 ? 'related' : ''}>{word}</span>)}
-          <svg viewBox="0 0 930 65" aria-hidden="true"><path d="M128 54 C310 -20 720 -20 880 54" /></svg>
+          <svg viewBox="0 0 930 65" aria-hidden="true"><path d="M280 54 C360 -10 620 -10 700 54" /></svg>
         </div>
       </div>
 
