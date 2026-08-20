@@ -42,10 +42,10 @@ export function Slide09EncoderDecoder({ step }: SlideProps) {
         </section>
 
         <svg className="architecture-flow" viewBox="0 0 1500 590" aria-hidden="true">
-          <path className={step >= 1 ? 'drawn' : ''} d="M345 555 V485" />
-          <path className={step >= 2 ? 'drawn' : ''} d="M610 250 H822" />
-          <path className={step >= 3 ? 'drawn' : ''} d="M1152 555 V485" />
-          <path className={step >= 4 ? 'drawn cross-path' : ''} d="M610 250 C735 250 782 340 900 340" />
+          <path className={step >= 1 ? 'drawn' : ''} d="M345 530 V445" />
+          <path className={step >= 2 ? 'drawn' : ''} d="M610 220 H890" />
+          <path className={step >= 3 ? 'drawn' : ''} d="M1152 530 V445" />
+          <path className={step >= 4 ? 'drawn cross-path' : ''} d="M610 220 C735 210 782 300 890 310" />
         </svg>
       </div>
 

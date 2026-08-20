@@ -23,11 +23,11 @@ export function Slide14GAN({ step }: SlideProps) {
         <div className={`gan-merge ${step >= 3 ? 'visible' : ''}`}><span>REAL</span><i /><span>FAKE</span></div>
         <div className={`gan-network discriminator ${step >= 3 ? 'visible' : ''}`}><ScanSearch /><span>DISCRIMINATOR · D</span><b>判断输入是真是假</b><small>learn to detect</small></div>
         <div className={`gan-verdict ${step >= 3 ? 'visible' : ''}`}><b>REAL?</b><span>0.52</span></div>
-        <svg className="gan-flow-lines" viewBox="0 0 1080 560" aria-hidden="true">
-          <path className={step >= 2 ? 'drawn' : ''} d="M518 225 H618" />
-          <path className={step >= 3 ? 'drawn' : ''} d="M730 225 H826" />
-          <path className={step >= 3 ? 'drawn' : ''} d="M730 423 H780 Q826 423 826 354" />
-          <path className={`feedback ${step >= 4 ? 'drawn' : ''}`} d="M943 351 C952 520 374 550 370 376" />
+        <svg className="gan-flow-lines" viewBox="0 0 1080 580" aria-hidden="true">
+          <path className={step >= 2 ? 'drawn' : ''} d="M540 225 H605" />
+          <path className={step >= 3 ? 'drawn' : ''} d="M795 225 H855" />
+          <path className={step >= 3 ? 'drawn' : ''} d="M770 440 H880 Q930 440 970 350" />
+          <path className={`feedback ${step >= 4 ? 'drawn' : ''}`} d="M1020 360 C890 600 500 600 370 360" />
         </svg>
         <div className={`gan-feedback ${step >= 4 ? 'visible' : ''}`}><RefreshCw /><span>ALTERNATING UPDATES</span><b>D 变准 → G 被迫变真</b></div>
       </div>

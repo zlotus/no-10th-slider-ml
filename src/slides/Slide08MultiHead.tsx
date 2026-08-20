@@ -2,6 +2,7 @@ import { Combine, EqualApproximately } from 'lucide-react'
 import { MiniAttentionHead } from '../components/TransformerVisuals'
 import { BottomTakeaway, SlideFrame } from '../components/SlideFrame'
 import type { SlideProps } from '../presentation/types'
+import { Math } from '../components/Math'
 
 const tokens = ['小明', '把', '苹果', '给', '小红', '因为', '她', '饿'] as const
 const heads = [
@@ -34,7 +35,9 @@ export function Slide08MultiHead({ step }: SlideProps) {
       </div>
 
       <div className={`head-merge ${step >= 5 ? 'visible' : ''}`}>
-        <Combine /><span>CONCAT</span><i>→</i><b>Wᴼ</b><i>→</i><strong>Mixed Representation</strong>
+        <Combine /><span>CONCAT</span><i>→</i><b><Math className="attention-formula-math">
+          {String.raw`W^O`}
+        </Math></b><i>→</i><strong>Mixed Representation</strong>
       </div>
 
       <div className={`head-caution ${step >= 5 ? 'visible' : ''}`}>

@@ -25,9 +25,9 @@ export function Slide11ViT({ step }: SlideProps) {
         </div>
         <div className={`vit-transformer ${step >= 3 ? 'visible' : ''}`}><Braces /><span>TRANSFORMER ENCODER</span><b>Self-Attention across patches</b><small>二维排列仍需要位置编码</small></div>
         <svg className="vit-flow" viewBox="0 0 1540 430" aria-hidden="true">
-          <path className={step >= 1 ? 'drawn' : ''} d="M190 210 H345" />
-          <path className={step >= 2 ? 'drawn' : ''} d="M704 210 H830" />
-          <path className={step >= 3 ? 'drawn' : ''} d="M1110 210 H1250" />
+          <path className={step >= 1 ? 'drawn' : ''} d="M60 210 H245" />
+          <path className={step >= 2 ? 'drawn' : ''} d="M615 210 H796" />
+          <path className={step >= 3 ? 'drawn' : ''} d="M1112 210 H1290" />
         </svg>
       </div>
 

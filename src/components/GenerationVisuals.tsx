@@ -74,8 +74,8 @@ export function LatentCloud({
         {[[130, 99], [174, 144], [226, 113], [275, 184], [315, 157], [205, 203]].map(([x, y], index) => (
           <circle key={`${x}-${y}`} className={`sample sample-${index}`} cx={x} cy={y} r={index === 3 ? 7 : 4} />
         ))}
-        <text className="mu" x="138" y="88">μ</text><text className="sigma" x="284" y="214">σ</text>
-        <text className="prior-label" x="265" y="50">N(0, I)</text>
+        <text className="mu" x="138" y="120">μ</text><text className="sigma" x="284" y="214">σ</text>
+        <text className="prior-label" x="265" y="40">N(0, I)</text>
       </svg>
       <small>CONTINUOUS LATENT SPACE</small>
     </div>
@@ -126,7 +126,7 @@ export function SimilaritySpace({
         <path className="match-link link-a" d="M92 81 Q112 103 132 130" />
         <path className="match-link link-b" d="M306 76 Q286 97 270 120" />
         <path className="match-link link-c" d="M334 224 Q312 232 288 246" />
-        <path className="negative-link" d="M92 81 Q231 39 334 224" />
+        <path className="negative-link" d="M92 81 Q205 39 271 123" />
       </svg>
       <small>SHARED EMBEDDING SPACE</small>
     </div>

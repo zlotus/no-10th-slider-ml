@@ -19,10 +19,25 @@ export function Slide06AttentionIntuition({ step }: SlideProps) {
           <span key={`${word}-${index}`} className={`${word === '她' ? 'query' : ''} ${word === '小红' ? 'answer' : ''}`}>{word}</span>
         ))}
         <svg viewBox="0 0 1420 300" aria-hidden="true">
-          <path className={`weight-line answer-line ${step >= 2 ? 'drawn' : ''}`} d="M1168 128 C1050 4 770 4 695 128" />
-          <path className={`weight-line ming-line ${step >= 3 ? 'drawn' : ''}`} d="M1168 128 C975 -62 260 -48 152 128" />
-          <path className={`weight-line apple-line ${step >= 3 ? 'drawn' : ''}`} d="M1168 128 C1010 36 592 44 476 128" />
-          <path className={`weight-line hungry-line ${step >= 3 ? 'drawn' : ''}`} d="M1168 128 C1220 60 1310 62 1370 128" />
+          <path
+            className={`weight-line answer-line ${step >= 2 ? 'drawn' : ''}`}
+            d="M970 128 C925 75 775 75 730 128"
+          />
+
+          <path
+            className={`weight-line ming-line ${step >= 3 ? 'drawn' : ''}`}
+            d="M970 128 C850 20 485 20 370 128"
+          />
+
+          <path
+            className={`weight-line apple-line ${step >= 3 ? 'drawn' : ''}`}
+            d="M970 128 C890 40 625 40 545 128"
+          />
+
+          <path
+            className={`weight-line hungry-line ${step >= 3 ? 'drawn' : ''}`}
+            d="M970 128 C990 98 1030 98 1050 128"
+          />
         </svg>
         <div className={`query-badge ${step >= 1 ? 'visible' : ''}`}><MousePointer2 /><span>CURRENT QUERY</span><b>“她”在找谁？</b></div>
         <div className={`weight-legend ${step >= 3 ? 'visible' : ''}`}><span>线宽 / opacity</span><i /><b>动态权重</b></div>

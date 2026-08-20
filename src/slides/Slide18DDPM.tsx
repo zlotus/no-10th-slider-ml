@@ -2,6 +2,7 @@ import { ArrowRight, Dices, Equal, Network, Scale } from 'lucide-react'
 import { NoiseFrame } from '../components/MLVisuals'
 import { BottomTakeaway, SlideFrame } from '../components/SlideFrame'
 import type { SlideProps } from '../presentation/types'
+import { Math } from '../components/Math'
 
 export function Slide18DDPM({ step }: SlideProps) {
   return (
@@ -30,7 +31,11 @@ export function Slide18DDPM({ step }: SlideProps) {
       </div>
 
       <div className={`ddpm-loss ${step >= 5 ? 'visible' : ''}`}>
-        <Scale /><span>SIMPLE REGRESSION OBJECTIVE</span><b>‖ ε − εθ(xₜ, t) ‖²</b><small>经典 DDPM 常用 ε-prediction；后续也有 x₀ / v 等参数化</small>
+        <Scale /><span className="ddpm-loss-label">NOISE PREDICTION LOSS</span>
+            <Math className="attention-formula-math">
+              {String.raw`\| \varepsilon - \varepsilon_{\theta}(x_t, t) \|^2`}
+            </Math>
+          <small>经典 DDPM 常用 ε-prediction；后续也有 x₀ / v 等参数化</small>
       </div>
 
       <div className={`ddpm-contrast ${step >= 6 ? 'visible' : ''}`}>

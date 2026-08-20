@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, Image, Link2, ScanText, Sparkles, WandSparkles } from 'lucide-react'
+import { ArrowDown, ArrowRight, Image, Link2, Unlink2, ScanText, Sparkles, WandSparkles } from 'lucide-react'
 import { SceneImage, SimilaritySpace } from '../components/GenerationVisuals'
 import { BottomTakeaway, SlideFrame } from '../components/SlideFrame'
 import type { SlideProps } from '../presentation/types'
@@ -22,7 +22,7 @@ export function Slide16CLIP({ step }: SlideProps) {
         <SimilaritySpace visible={step >= 2} matched={step >= 3} separated={step >= 4} />
         <div className={`contrastive-legend ${step >= 3 ? 'visible' : ''}`}>
           <div><Link2 /><span>MATCHED PAIR</span><b>拉近</b></div>
-          <div className={step >= 4 ? 'visible' : ''}><span>UNMATCHED</span><b>推远</b></div>
+          <div className={step >= 4 ? 'visible' : ''}><Unlink2 className="unmatch-icon" /><span>UNMATCHED</span><b>推远</b></div>
           <small>一个 batch 内，两两计算相似度</small>
         </div>
       </div>

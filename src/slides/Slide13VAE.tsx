@@ -2,6 +2,7 @@ import { ArrowRight, CircleDotDashed, Combine, Image, Sigma, Sparkles } from 'lu
 import { LatentCloud, SceneImage } from '../components/GenerationVisuals'
 import { BottomTakeaway, SlideFrame } from '../components/SlideFrame'
 import type { SlideProps } from '../presentation/types'
+import { Math } from '../components/Math'
 
 export function Slide13VAE({ step }: SlideProps) {
   return (
@@ -19,11 +20,20 @@ export function Slide13VAE({ step }: SlideProps) {
         <div className={`vae-network encoder ${step >= 1 ? 'visible' : ''}`}><Image /><span>ENCODER</span><b>高维像素 → 紧凑表示</b></div>
         <ArrowRight className={step >= 2 ? 'visible' : ''} />
         <div className={`vae-parameters ${step >= 2 ? 'visible' : ''}`}>
-          <span>qφ(z | x)</span><div><b>μ</b><small>center</small></div><div><b>σ</b><small>spread</small></div>
+          <Math className="attention-formula-math">
+            {String.raw`q_φ\left(z | x\right)`}
+          </Math>
+          <div><b>μ</b><small>center</small></div><div><b>σ</b><small>spread</small></div>
           <em>不是一个固定点，而是一片概率区域</em>
         </div>
         <ArrowRight className={step >= 3 ? 'visible' : ''} />
-        <div className={`vae-sample ${step >= 3 ? 'visible' : ''}`}><CircleDotDashed /><span>SAMPLE</span><b>z = μ + σ ⊙ ε</b><small>ε ~ N(0, I)</small></div>
+        <div className={`vae-sample ${step >= 3 ? 'visible' : ''}`}><CircleDotDashed />
+          <span>SAMPLE</span>
+          <b>z = μ + σ ⊙ ε</b>
+          <Math className="attention-formula-math">
+            {String.raw`\varepsilon \sim \mathcal{N}(0, I)`}
+          </Math>
+        </div>
         <ArrowRight className={step >= 3 ? 'visible' : ''} />
         <div className={`vae-network decoder ${step >= 3 ? 'visible' : ''}`}><Combine /><span>DECODER</span><b>潜变量 → 图像</b></div>
         <ArrowRight className={step >= 3 ? 'visible' : ''} />

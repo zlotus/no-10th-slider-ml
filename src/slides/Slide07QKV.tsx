@@ -1,6 +1,7 @@
 import { ArrowDown, Database, KeyRound, Search, Weight } from 'lucide-react'
 import { BottomTakeaway, SlideFrame } from '../components/SlideFrame'
 import type { SlideProps } from '../presentation/types'
+import { Math } from '../components/Math'
 
 const candidates = [
   { token: '小红', score: '.72', width: '92%' },
@@ -43,12 +44,28 @@ export function Slide07QKV({ step }: SlideProps) {
       </div>
 
       <div className={`attention-formula ${step >= 6 ? 'visible' : ''}`}>
-        <span>Attention(Q, K, V)</span><b>=</b><strong>softmax( QKᵀ / √d<sub>k</sub> ) V</strong>
-        <div><i>QKᵀ · 看谁</i><i>softmax · 变成权重</i><i>× V · 拿信息</i></div>
+        <Math className="attention-formula-math">
+          {String.raw`\operatorname{Attention}(Q,K,V)
+            =
+            \operatorname{softmax}\left(
+              \frac{QK^\top}{\sqrt{d_k}}
+            \right)V`}
+        </Math>
+        <div>
+          <i>QKᵀ · 看谁</i>
+          <i>softmax · 变成权重</i>
+          <i>× V · 拿信息</i>
+        </div>
       </div>
 
       <BottomTakeaway visible={step >= 7}>
-        <strong>Q / K 决定“看谁”，</strong><span>V 决定“拿什么信息”。</span>
+        <strong>
+        <Math className="attention-formula-math">
+          {String.raw`QK^\top`}
+        </Math>
+          决定“看谁”，</strong><span><Math className="attention-formula-math">
+          {String.raw`V`}
+        </Math> 决定“拿什么信息”。</span>
       </BottomTakeaway>
     </SlideFrame>
   )
