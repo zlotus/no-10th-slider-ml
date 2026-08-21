@@ -21,9 +21,20 @@ export function Slide18DDPM({ step }: SlideProps) {
         <ArrowRight className={step >= 2 ? 'visible' : ''} />
         <section className={`ddpm-noisy ${step >= 2 ? 'visible' : ''}`}><NoiseFrame label="xₜ" caption="NOISY SAMPLE" noise={.62} seed={9} visible={step >= 2} /></section>
         <ArrowRight className={step >= 3 ? 'visible' : ''} />
-        <section className={`ddpm-network ${step >= 3 ? 'visible' : ''}`}><Network /><span>εθ(xₜ, t)</span><b>DENOISING NETWORK</b><small>识别混入的噪声</small></section>
+        <section className={`ddpm-network ${step >= 3 ? 'visible' : ''}`}><Network />
+          <Math className="ddpm-epsilon-networking">
+            {String.raw`\varepsilon_{\theta}(x_t, t)`}
+          </Math>
+          <b>DENOISING NETWORK</b><small>识别混入的噪声</small>
+        </section>
         <ArrowRight className={step >= 4 ? 'visible' : ''} />
-        <section className={`ddpm-epsilon ${step >= 4 ? 'visible' : ''}`}><i>ε̂</i><span>PREDICTED NOISE</span><b>一步监督信号</b></section>
+        <section className={`ddpm-epsilon ${step >= 4 ? 'visible' : ''}`}>
+          <Math className="ddpm-epsilon-symbol">
+            {String.raw`\hat{\varepsilon}`}
+          </Math>
+          <span className="ddpm-epsilon-label">PREDICTED NOISE</span>
+          <b>一步监督信号</b>
+        </section>
       </div>
 
       <div className={`ddpm-shortcut ${step >= 2 ? 'visible' : ''}`}>
@@ -32,7 +43,7 @@ export function Slide18DDPM({ step }: SlideProps) {
 
       <div className={`ddpm-loss ${step >= 5 ? 'visible' : ''}`}>
         <Scale /><span className="ddpm-loss-label">NOISE PREDICTION LOSS</span>
-            <Math className="attention-formula-math">
+            <Math className="ddpm-loss-formula">
               {String.raw`\| \varepsilon - \varepsilon_{\theta}(x_t, t) \|^2`}
             </Math>
           <small>经典 DDPM 常用 ε-prediction；后续也有 x₀ / v 等参数化</small>

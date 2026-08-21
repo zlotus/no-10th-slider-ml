@@ -3,6 +3,7 @@ import { Token } from '../components/MLVisuals'
 import { FeatureMap } from '../components/ModernGenerationVisuals'
 import { BottomTakeaway, SlideFrame } from '../components/SlideFrame'
 import type { SlideProps } from '../presentation/types'
+import { Math } from '../components/Math'
 
 const promptTokens = ['a', 'red', 'sports car', 'in the', 'snow']
 
@@ -28,7 +29,14 @@ export function Slide20CrossAttention({ step }: SlideProps) {
       <div className={`cross-q ${step >= 3 ? 'visible' : ''}`}><FeatureMap visible={step >= 3} focus={focus} label="LATENT FEATURES" /><div><b>Q</b><span>IMAGE / LATENT</span><small>当前视觉特征在找什么？</small></div></div>
 
       <div className={`cross-core ${step >= 4 ? 'visible' : ''}`}>
-        <span>CROSS-ATTENTION</span><b>softmax(QKᵀ) V</b><small>图像特征主动从文本条件中取信息</small>
+        <span className='cross-label'>CROSS-ATTENTION</span>
+        <Math className="cross-matrix">
+          {String.raw`\operatorname{softmax}\left(
+              \frac{QK^\top}{\sqrt{d_k}}
+            \right)V`}
+        </Math>
+
+        <small>图像特征主动从文本条件中取信息</small>
         <svg viewBox="0 0 540 250" aria-hidden="true"><path className="amber" d="M0 42 C172 42 154 124 265 124" /><path className="violet" d="M0 210 C172 210 154 133 265 133" /><path className="merged" d="M275 128 H530" /></svg>
       </div>
 

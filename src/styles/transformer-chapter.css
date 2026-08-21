@@ -290,9 +290,9 @@
 .attention-formula > strong { color: #f0dcae; font: 600 23px var(--mono); }
 .attention-formula > div { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .attention-formula i { padding: 12px; border-top: 1px solid #3c3d35; color: #8b8474; text-align: center; font: 11px var(--mono); font-style: normal; }
-.attention-formula-math {
-  color: #e8ebef;
-  font-size: 28px;
+.attention-formula.visible > .attention-formula-math {
+  color: #aaa18e;
+  font: 600 29px var(--mono); 
 }
 
 /* Slide 08 — multi-head */

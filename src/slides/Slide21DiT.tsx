@@ -17,7 +17,7 @@ export function Slide21DiT({ step }: SlideProps) {
       <section className={`backbone-panel unet-panel ${step >= 0 ? 'visible' : ''} ${step >= 5 ? 'dimmed' : ''}`}>
         <header><span>CLASSIC DIFFUSION</span><b>U-NET BACKBONE</b></header>
         <FeatureMap visible focus={[2, 5, 9, 16]} label="NOISY LATENT" />
-        <ArrowRight /><div className="unet-shape"><Network /><i /><b>U-NET</b><small>multi-scale + skip connections</small></div>
+        <ArrowRight /><div className="unet-shape"><Network /><i /><b>U-NET</b><small>multi-scale + <br></br>skip connections</small></div>
         <ArrowRight /><div className="backbone-output"><span>ε / v</span><small>PREDICTION</small></div>
       </section>
 

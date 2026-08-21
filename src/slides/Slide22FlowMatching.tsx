@@ -2,6 +2,7 @@ import { ArrowRight, Route, Waves } from 'lucide-react'
 import { VelocityField } from '../components/ModernGenerationVisuals'
 import { BottomTakeaway, SlideFrame } from '../components/SlideFrame'
 import type { SlideProps } from '../presentation/types'
+import { Math } from '../components/Math'
 
 export function Slide22FlowMatching({ step }: SlideProps) {
   return (
@@ -23,7 +24,11 @@ export function Slide22FlowMatching({ step }: SlideProps) {
 
       <div className={`flow-field-stage ${step >= 2 ? 'visible' : ''}`}>
         <VelocityField visible={step >= 2} straightened={step >= 5} />
-        <div className={`flow-equation ${step >= 3 ? 'visible' : ''}`}><span>VELOCITY FIELD</span><b>dx / dt = vθ(x, t)</b><small>模型学习随时间变化的移动方向</small></div>
+        <div className={`flow-equation ${step >= 3 ? 'visible' : ''}`}><span className='flow-equation-span'>VELOCITY FIELD</span>
+        <Math className="flow-equation-math">
+          {String.raw`\frac{dx}{dt} = v_{\theta}(x, t)`}
+        </Math>
+        <small>模型学习随时间变化的移动方向</small></div>
       </div>
 
       <div className={`flow-matching-note ${step >= 4 ? 'visible' : ''}`}><Route /><span>FLOW MATCHING</span><b>回归一条概率路径上的向量场</b><small>Diffusion path 可以包含在更一般的概率路径家族中</small></div>
